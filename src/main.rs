@@ -28,13 +28,20 @@ impl MyApp {
 
 impl eframe::App for MyApp {
     fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |ui| {});
-        egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
+        egui::TopBottomPanel::top("menu_panel").show(ctx, |ui| {
             egui::menu::bar(ui, |ui| {
                 ui.menu_button("File", |ui| {});
                 ui.menu_button("Edit", |ui| {});
                 ui.menu_button("Window", |ui| {});
             });
+        });
+
+        egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
+            let button = egui::Button::new("Button")
+                .fill(egui::Color32::from_rgb(128, 128, 128))
+                .rounding(0.0);
+
+            ui.add(button)
         });
     }
 }
