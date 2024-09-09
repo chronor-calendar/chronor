@@ -32,6 +32,8 @@ impl eframe::App for MyApp {
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             egui::menu::bar(ui, |ui| {
                 ui.menu_button("File", |ui| {});
+                ui.menu_button("Edit", |ui| {});
+                ui.menu_button("Window", |ui| {});
             });
         });
     }
