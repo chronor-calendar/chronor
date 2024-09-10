@@ -5,7 +5,7 @@ use eframe::egui;
 fn main() -> eframe::Result {
     let native_options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-            .with_title("Pixliz")
+            .with_title("Chronor")
             .with_min_inner_size([330.0, 220.0])
             .with_icon(
                 eframe::icon_data::from_png_bytes(&include_bytes!("../assets/icon.png")[..])
@@ -15,7 +15,7 @@ fn main() -> eframe::Result {
     };
 
     eframe::run_native(
-        "Pixliz",
+        "Chronor",
         native_options,
         Box::new(|cc| Ok(Box::new(MyApp::new(cc)))),
     )
