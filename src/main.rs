@@ -30,14 +30,29 @@ impl MyApp {
     }
 }
 
+fn to_percent(percent: f32, from: f32) -> f32{
+    from * percent / 100.0
+}
+
 impl eframe::App for MyApp {
     fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
+        let current_height = ctx.input(|i: &egui::InputState| i.screen_rect().max[1]);
+        let current_width = ctx.input(|i: &egui::InputState| i.screen_rect().max[0]);
+
         egui::TopBottomPanel::top("menu_panel").show(ctx, |ui| {
             egui::menu::bar(ui, |ui| {
                 ui.menu_button("File", |ui| {});
                 ui.menu_button("Edit", |ui| {});
                 ui.menu_button("Window", |ui| {});
             });
+        });
+        egui::SidePanel::left("left_panel")
+            .min_width(180.0)
+            .max_width(to_percent(20.0, current_width))
+            .show(ctx, |ui| {
+            });
+        egui::CentralPanel::default().show(ctx, |ui|{
+
         });
     }
 }
